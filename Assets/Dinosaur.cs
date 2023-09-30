@@ -43,7 +43,6 @@ public class Dinosaur : MonoBehaviour
 
     void MoveToDestination() {
         if (isAtDestination()) {
-            Debug.Log("Is at destination");
             return;
         }
         var direction = destination - transform.position;
