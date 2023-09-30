@@ -5,16 +5,16 @@ using App;
 using CoinPackage.Debugging;
 using EggSystem;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 namespace EggSystem
 {
     public class Egg : MonoBehaviour
     {
         public Hatcher hatcher;
-        public Slider slider;
         public GameObject sliderHolder;
         
+        private Slider _slider;
         private EggStatusManager _eggManager;
         private float _currentGrowth = 0;
         private bool _finished = false;
@@ -24,12 +24,12 @@ namespace EggSystem
         // Start is called before the first frame update
         void Start()
         {
-            slider = sliderHolder.GetComponent<Slider>();
             _eggManager = EggStatusManager.Instance;
             _anim = GetComponent<Animator>();
-            slider = sliderHolder.GetComponent<Slider>();
-            slider.lowValue = 0f;
-            slider.highValue = DevSettings.Instance.eggSettings.pointsToBorn;
+            _slider = sliderHolder.GetComponent<Slider>();
+            CDebug.Log( _slider, sliderHolder );
+            _slider.minValue = 0f;
+            _slider.maxValue = DevSettings.Instance.eggSettings.pointsToBorn;
         }
 
         // Update is called once per frame
@@ -48,7 +48,7 @@ namespace EggSystem
                 _anim.SetTrigger("eggHatched");
             }
 
-            slider.value = _currentGrowth;
+            _slider.value = _currentGrowth;
         }
 
         void EndLive()
