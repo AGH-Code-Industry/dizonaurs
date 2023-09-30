@@ -8,6 +8,7 @@ namespace EggSystem
         public int pointsToBorn = 1000;
         public int normalGrowth = 3;
         public int additionalGrowth = 3;
+        public float timeForNewEggToHatch = 2.0f;
 
     }
 }
