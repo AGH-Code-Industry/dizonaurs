@@ -80,6 +80,7 @@ crashlytics-build.properties
 # Editors
 .idea/
 .vsconfig
+.vscode
 .vsconfig/
 
 # Coin Additions
