@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using App;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,7 +11,7 @@ namespace Menu
         // Start is called before the first frame update
         void Start()
         {
-            SceneManager.LoadScene("Game");
+            SceneManager.LoadScene(DevSettings.Instance.appSettings.gameSceneName);
         }
     }
 }
