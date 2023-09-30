@@ -15,4 +15,5 @@ MonoBehaviour:
   pointsToBorn: 9
   normalGrowth: 3
   additionalGrowth: 3
-  timeForNewEggToHatch: 2
+  timeForNewEggToHatch: 3
+  timeForHatchVariation: 0.5
