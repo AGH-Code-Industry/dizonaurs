@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2859524086662418173}
   - component: {fileID: 4919528151754419259}
   - component: {fileID: 1074814070085722235}
+  - component: {fileID: 534717706452393816}
   m_Layer: 0
   m_Name: QuickTimeEvent
   m_TagString: QuickTimeEvent
@@ -117,3 +118,15 @@ MonoBehaviour:
   MinSleepDuration: 5
   MaxSleepDuration: 10
   state: 0
+--- !u!114 &534717706452393816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3367090746662935362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87afceb2d3ea90938aecb57ad659e3a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

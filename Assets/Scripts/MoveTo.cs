@@ -4,12 +4,15 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class MoveTo : MonoBehaviour {
-    public Transform goal;
+    private NavMeshAgent _agent;
 
     void Start() {
-        var agent = GetComponent<NavMeshAgent>();
-        agent.updateRotation = false;
-        agent.updateUpAxis = false;
-        agent.destination = goal.position;
+        _agent = GetComponent<NavMeshAgent>();
+        _agent.updateRotation = false;
+        _agent.updateUpAxis = false;
+    }
+
+    public void setGoal(Transform goal) {
+        _agent.destination = goal.position;
     }
 }
