@@ -9,7 +9,7 @@ namespace EggSystem
         public static EggStatusManager Instance;
         
         
-        
+        public float CurrentGrowthRaw { get; set; }
         public float CurrentGrowth { get; set; }
         public int Disturbances { get; set; } = 0;
 
@@ -30,6 +30,7 @@ namespace EggSystem
 
         private void CalculateGrowth()
         {
+            CurrentGrowthRaw = DevSettings.Instance.eggSettings.normalGrowth - Disturbances;
             CurrentGrowth = (DevSettings.Instance.eggSettings.normalGrowth - Disturbances) * Time.deltaTime;
         }
     }

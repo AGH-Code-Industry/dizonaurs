@@ -9,6 +9,6 @@ namespace EggSystem
         public int normalGrowth = 3;
         public int additionalGrowth = 3;
         public float timeForNewEggToHatch = 2.0f;
-
+        public float timeForHatchVariation = 0.5f;
     }
 }

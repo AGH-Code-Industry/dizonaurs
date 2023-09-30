@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using App;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace EggSystem
 {
@@ -17,7 +18,9 @@ namespace EggSystem
 
         public void TellEggHatched()
         {
-            StartCoroutine(WaitForNewEgg(DevSettings.Instance.eggSettings.timeForNewEggToHatch));
+            var time = Random.Range(-DevSettings.Instance.eggSettings.timeForHatchVariation,
+                DevSettings.Instance.eggSettings.timeForHatchVariation);
+            StartCoroutine(WaitForNewEgg(DevSettings.Instance.eggSettings.timeForNewEggToHatch + time));
         }
         
         private void CreateNewEgg()
