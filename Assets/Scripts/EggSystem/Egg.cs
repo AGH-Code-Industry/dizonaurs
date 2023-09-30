@@ -24,6 +24,7 @@ namespace EggSystem
         // Start is called before the first frame update
         void Start()
         {
+            slider = sliderHolder.GetComponent<Slider>();
             _eggManager = EggStatusManager.Instance;
             _anim = GetComponent<Animator>();
             slider = sliderHolder.GetComponent<Slider>();
