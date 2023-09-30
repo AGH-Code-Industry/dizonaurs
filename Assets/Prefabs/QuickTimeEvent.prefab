@@ -10,9 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3654960133266480517}
   - component: {fileID: 2859524086662418173}
+  - component: {fileID: 4919528151754419259}
+  - component: {fileID: 1074814070085722235}
   m_Layer: 0
   m_Name: QuickTimeEvent
-  m_TagString: Untagged
+  m_TagString: QuickTimeEvent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,3 +86,34 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &4919528151754419259
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3367090746662935362}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!114 &1074814070085722235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3367090746662935362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42da5682b0411fe3abe306958855b202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MinSleepDuration: 5
+  MaxSleepDuration: 10
+  state: 0
