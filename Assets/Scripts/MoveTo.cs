@@ -8,6 +8,8 @@ public class MoveTo : MonoBehaviour {
 
     void Start() {
         var agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
         agent.destination = goal.position;
     }
 }
