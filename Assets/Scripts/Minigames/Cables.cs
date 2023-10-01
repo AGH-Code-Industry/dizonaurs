@@ -16,6 +16,7 @@ namespace Minigames
         public GameObject particles;
 
         private SpriteRenderer _renderer;
+        private AudioSource _audio;
 
         private float _lastActivation;
         private float _nextActivationTime;
@@ -25,6 +26,7 @@ namespace Minigames
         private void Awake()
         {
             _renderer = GetComponent<SpriteRenderer>();
+            _audio = GetComponent<AudioSource>();
             _deviation = timeBetweenActivations * deviationFactor;
             CalcNextActivationTime();
             particles.SetActive(false);
@@ -48,6 +50,7 @@ namespace Minigames
             _isBroken = true;
             // _renderer.color = Color.red;
             particles.SetActive(true);
+            _audio.Play();
         }
 
         public void Repair()
@@ -57,6 +60,7 @@ namespace Minigames
             // _renderer.color = Color.white;
             CalcNextActivationTime();
             _isBroken = false;
+            _audio.Stop();
         }
 
         private void InitGame()

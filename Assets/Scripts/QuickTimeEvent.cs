@@ -1,16 +1,20 @@
 using EggSystem;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class QuickTimeEvent : MonoBehaviour {
     public float MinSleepDuration;
     public float MaxSleepDuration;
     public float FixingTime;
+    public GameObject imageState;
 
     public State state = State.Sleeping;
+
+    public GameObject ProgressBar;
+    private Slider _slider;
     private float timer = 0;
     private float nextSleepDuration = 0;
-    private SpriteRenderer sprite;
-
+    private AudioSource _audio;
 
     public enum State {
         Sleeping,
@@ -20,11 +24,18 @@ public class QuickTimeEvent : MonoBehaviour {
 
 
     void Awake() {
-        sprite = GetComponent<SpriteRenderer>();
+        _audio = GetComponent<AudioSource>();
+        _slider = ProgressBar.GetComponent<Slider>();
     }
 
     void Start() {
         GoToSleep();
+        InitializeProgressBar();
+    }
+
+    private void InitializeProgressBar() {
+        _slider.minValue = 0;
+        _slider.maxValue = FixingTime;
     }
 
     void Update() {
@@ -41,10 +52,20 @@ public class QuickTimeEvent : MonoBehaviour {
     private void GoToSleep() {
         state = State.Sleeping;
         timer = Time.time;
+        if (_audio)
+        {
+            _audio.Stop();
+        }
+
+        if (imageState)
+        {
+            imageState.SetActive(false);
+        }
         nextSleepDuration = GenerateSleepDuration();
-        Debug.Log(nextSleepDuration);
         transform.Translate(Vector3.forward * -999);
-        EggStatusManager.Instance.Disturbances -= 1;
+        EggStatusManager.Instance.decreateDisturbances();
+        _slider.value = 0;
+        ProgressBar.SetActive(false);
     }
 
     private float GenerateSleepDuration() {
@@ -59,6 +80,15 @@ public class QuickTimeEvent : MonoBehaviour {
 
     private void GoToFiredState() {
         state = State.Fired;
+        if (_audio)
+        {
+            _audio.Play();
+        }
+
+        if (imageState)
+        {
+            imageState.SetActive(true);
+        }
         EggStatusManager.Instance.Disturbances += 1;
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
     }
@@ -74,10 +104,13 @@ public class QuickTimeEvent : MonoBehaviour {
     void GoToFixingState() {
         state = State.Fixing;
         timer = Time.time;
+        ProgressBar.SetActive(true);
     }
 
     void FixingTick() {
-        if (Time.time - timer >= FixingTime) {
+        var fixingDuration = Time.time - timer;
+        _slider.value = fixingDuration;
+        if (fixingDuration >= FixingTime) {
             GoToSleep();
         }
     }

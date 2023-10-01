@@ -4,6 +4,7 @@ using System.IO;
 using App;
 using CoinPackage.Debugging;
 using EggSystem;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +14,8 @@ namespace EggSystem
     {
         public Hatcher hatcher;
         public GameObject sliderHolder;
-        
+
+        private AudioSource _audio;
         private Slider _slider;
         private EggStatusManager _eggManager;
         private float _currentGrowth = 0;
@@ -24,6 +26,7 @@ namespace EggSystem
         // Start is called before the first frame update
         void Start()
         {
+            _audio = GetComponent<AudioSource>();
             _eggManager = EggStatusManager.Instance;
             _anim = GetComponent<Animator>();
             _slider = sliderHolder.GetComponent<Slider>();
@@ -49,12 +52,11 @@ namespace EggSystem
             {
                 CDebug.Log($"Egg hatched!" % Colorize.Green);
                 _finished = true;
+                _audio.Play();
                 _anim.SetTrigger("eggHatched");
-            }else if (_currentGrowth < 0f)
-            {
-                Destroy(gameObject);
             }
 
+            _currentGrowth = math.clamp(_currentGrowth, 0, 9999);
             _slider.value = _currentGrowth;
         }
 
