@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EggSystemSettings
   m_EditorClassIdentifier: 
   pointsToBorn: 60
-  normalGrowth: 2
+  normalGrowth: 3
   additionalGrowth: 7
   timeForNewEggToHatch: 3
   timeForHatchVariation: 0.5

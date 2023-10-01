@@ -5571,7 +5571,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea667c941f184fbdf951343855bc1f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Instance: {fileID: 0}
 --- !u!1 &162748350
 GameObject:
   m_ObjectHideFlags: 0
@@ -23801,6 +23800,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2333054906485908282, guid: 21ea2c4c3fa94409e80286f5437e4eda, type: 3}
   m_PrefabInstance: {fileID: 982827678}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &982827681 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2333054907198619396, guid: 21ea2c4c3fa94409e80286f5437e4eda, type: 3}
+  m_PrefabInstance: {fileID: 982827678}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a71df24a7e8c49c3b36561e51ff36303, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &995043301
 GameObject:
   m_ObjectHideFlags: 0
@@ -26293,6 +26303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7587cd704b64aa1b16a7909b6c589a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cables: {fileID: 982827681}
 --- !u!1 &1389942407
 GameObject:
   m_ObjectHideFlags: 0
