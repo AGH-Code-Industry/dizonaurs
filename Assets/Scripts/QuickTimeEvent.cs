@@ -22,7 +22,7 @@ public class QuickTimeEvent : MonoBehaviour {
 
     void Awake() {
         sprite = GetComponent<SpriteRenderer>();
-        _audio = GetComponent<AudioSource>();d
+        _audio = GetComponent<AudioSource>();
     }
 
     void Start() {
