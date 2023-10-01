@@ -65,7 +65,7 @@ namespace Minigames
 
         private void InitGame()
         {
-            var game = Instantiate(gamePrefab, new Vector2(-6.3f, -2.6f), Quaternion.identity);
+            var game = Instantiate(gamePrefab, new Vector2(-6.45f, -3.55f), Quaternion.identity);
             game.GetComponent<CableMinigame>().controller = this;
         }
 

@@ -12,7 +12,7 @@ namespace EggSystem
         public float CurrentGrowthRaw { get; set; }
         public float CurrentGrowth { get; set; }
         public float AdditionalGrowth { get; set; }
-        public int Disturbances { get; set; } = 0;
+        public int Disturbances { get; set; }
 
         public void decreateDisturbances() {
             if (Disturbances > 0) {
@@ -27,7 +27,7 @@ namespace EggSystem
                 throw new Exception("Tried to overwrite singleton");
             }
             Instance = this;
-            
+            Disturbances = 0;
         }
 
         private void Update()
@@ -38,7 +38,7 @@ namespace EggSystem
         private void CalculateGrowth()
         {
             CurrentGrowthRaw = DevSettings.Instance.eggSettings.normalGrowth - Disturbances;
-            CurrentGrowthRaw = Math.Clamp(CurrentGrowthRaw, 0, 100);
+            // CurrentGrowthRaw = Math.Clamp(CurrentGrowthRaw, 0, 100);
             CurrentGrowth = CurrentGrowthRaw * Time.deltaTime;
             AdditionalGrowth = (DevSettings.Instance.eggSettings.additionalGrowth) * Time.deltaTime;
         }
