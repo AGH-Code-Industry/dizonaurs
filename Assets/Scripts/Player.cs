@@ -25,6 +25,6 @@ public class Player : MonoBehaviour {
     }
 
     void Update() {
-        animator.SetFloat("Velocity", agent.speed);
+        animator.SetFloat("Velocity", agent.velocity.magnitude);
     }
 }
