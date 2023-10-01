@@ -55,7 +55,7 @@ namespace Minigames
 
         public void Repair()
         {
-            EggStatusManager.Instance.Disturbances -= 1;
+            EggStatusManager.Instance.decreateDisturbances();
             particles.SetActive(false);
             // _renderer.color = Color.white;
             CalcNextActivationTime();

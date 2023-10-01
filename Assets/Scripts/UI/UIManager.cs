@@ -10,6 +10,7 @@ namespace UI
         [SerializeField] private GameObject goToGarden;
         [SerializeField] private GameObject goToLevel;
         [SerializeField] private TextMeshProUGUI moneyField;
+        [SerializeField] private GameObject jajo;
 
         public Transform cameraa;
 
@@ -34,12 +35,14 @@ namespace UI
             goToGarden.SetActive(false);
             goToLevel.SetActive(true);
             cameraa.position = new Vector3(63f, cameraa.position.y, cameraa.position.z);
+            jajo.SetActive(false);
         }
 
         public void GoToLevel()
         {
             goToLevel.SetActive(false);
             goToGarden.SetActive(true);
+            jajo.SetActive(true);
             cameraa.position = new Vector3(-6.2f, cameraa.position.y, cameraa.position.z);
         }
     }
