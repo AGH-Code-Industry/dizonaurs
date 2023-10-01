@@ -13,6 +13,8 @@ namespace Minigames
         [Range(0f, 1f)]
         public float deviationFactor;
 
+        public GameObject particles;
+
         private SpriteRenderer _renderer;
 
         private float _lastActivation;
@@ -25,6 +27,7 @@ namespace Minigames
             _renderer = GetComponent<SpriteRenderer>();
             _deviation = timeBetweenActivations * deviationFactor;
             CalcNextActivationTime();
+            particles.SetActive(false);
         }
 
         private void Update()
@@ -44,11 +47,13 @@ namespace Minigames
             EggStatusManager.Instance.Disturbances += 1;
             _isBroken = true;
             _renderer.color = Color.red;
+            particles.SetActive(true);
         }
 
         public void Repair()
         {
             EggStatusManager.Instance.Disturbances -= 1;
+            particles.SetActive(false);
             _renderer.color = Color.white;
             CalcNextActivationTime();
             _isBroken = false;

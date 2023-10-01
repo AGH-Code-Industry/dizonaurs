@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 395812173392610566}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.04, z: 0}
+  m_LocalPosition: {x: 0, y: 0.201, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -131,3 +131,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eggPrefab: {fileID: 3127187972930877365, guid: d51b5ab6e36f3b0dbaca5bd96917094b, type: 3}
   eggPlace: {fileID: 785098201027388701}
+  parent: {fileID: 0}
+  parentForNewChild: {fileID: 0}
+  childPrefab: {fileID: 0}
