@@ -135,8 +135,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gamePrefab: {fileID: 1584894698226911327, guid: a865ca8bbced2450aa605d1738251d85, type: 3}
-  timeBetweenActivations: 15
-  deviationFactor: 0.5
+  timeBetweenActivations: 30
+  deviationFactor: 0.3
   particles: {fileID: 4001674053882963486}
 --- !u!61 &2333054907198619402
 BoxCollider2D:
@@ -205,7 +205,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2689e2a34ec3345fba1b82e21dc05376, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0

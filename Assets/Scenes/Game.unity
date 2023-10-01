@@ -22380,7 +22380,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goToGarden: {fileID: 1189766486}
   goToLevel: {fileID: 1460972048}
-  moneyField: {fileID: 0}
+  moneyField: {fileID: 162748352}
   cameraa: {fileID: 1996047014}
 --- !u!1 &520856213
 GameObject:
@@ -43885,11 +43885,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1074814070085722235, guid: e27c8133936f7ba9d9639f24dd71e585, type: 3}
       propertyPath: MaxSleepDuration
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 1074814070085722235, guid: e27c8133936f7ba9d9639f24dd71e585, type: 3}
       propertyPath: MinSleepDuration
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3367090746662935362, guid: e27c8133936f7ba9d9639f24dd71e585, type: 3}
       propertyPath: m_Name
@@ -43975,7 +43975,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b6e0a008ed25741d796269c9279aa713, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0

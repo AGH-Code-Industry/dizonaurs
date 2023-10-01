@@ -4,6 +4,7 @@ using System.IO;
 using App;
 using CoinPackage.Debugging;
 using EggSystem;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -53,11 +54,9 @@ namespace EggSystem
                 _finished = true;
                 _audio.Play();
                 _anim.SetTrigger("eggHatched");
-            }else if (_currentGrowth < 0f)
-            {
-                Destroy(gameObject);
             }
 
+            _currentGrowth = math.clamp(_currentGrowth, 0, 9999);
             _slider.value = _currentGrowth;
         }
 
