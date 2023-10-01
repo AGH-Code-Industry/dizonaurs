@@ -117,6 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MinSleepDuration: 5
   MaxSleepDuration: 10
+  FixingTime: 3
   state: 0
 --- !u!114 &534717706452393816
 MonoBehaviour:
@@ -130,3 +131,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87afceb2d3ea90938aecb57ad659e3a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destination: {fileID: 0}

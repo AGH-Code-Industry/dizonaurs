@@ -14,6 +14,12 @@ namespace EggSystem
         public float AdditionalGrowth { get; set; }
         public int Disturbances { get; set; } = 0;
 
+        public void decreateDisturbances() {
+            if (Disturbances > 0) {
+                Disturbances--;
+            }
+        }
+
         private void Awake()
         {
             if (Instance != null)

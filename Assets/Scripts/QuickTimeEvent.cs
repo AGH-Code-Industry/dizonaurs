@@ -50,7 +50,7 @@ public class QuickTimeEvent : MonoBehaviour {
         nextSleepDuration = GenerateSleepDuration();
         Debug.Log(nextSleepDuration);
         transform.Translate(Vector3.forward * -999);
-        EggStatusManager.Instance.Disturbances -= 1;
+        EggStatusManager.Instance.decreateDisturbances();
     }
 
     private float GenerateSleepDuration() {
