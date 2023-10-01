@@ -10,6 +10,7 @@ public class QuickTimeEvent : MonoBehaviour {
     private float timer = 0;
     private float nextSleepDuration = 0;
     private SpriteRenderer sprite;
+    private AudioSource _audio;
 
 
     public enum State {
@@ -21,6 +22,7 @@ public class QuickTimeEvent : MonoBehaviour {
 
     void Awake() {
         sprite = GetComponent<SpriteRenderer>();
+        _audio = GetComponent<AudioSource>();d
     }
 
     void Start() {
@@ -41,6 +43,10 @@ public class QuickTimeEvent : MonoBehaviour {
     private void GoToSleep() {
         state = State.Sleeping;
         timer = Time.time;
+        if (_audio)
+        {
+            _audio.Stop();
+        }
         nextSleepDuration = GenerateSleepDuration();
         Debug.Log(nextSleepDuration);
         transform.Translate(Vector3.forward * -999);
@@ -59,6 +65,10 @@ public class QuickTimeEvent : MonoBehaviour {
 
     private void GoToFiredState() {
         state = State.Fired;
+        if (_audio)
+        {
+            _audio.Play();
+        }
         EggStatusManager.Instance.Disturbances += 1;
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
     }
