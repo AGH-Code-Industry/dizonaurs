@@ -1,3 +1,4 @@
+using EggSystem;
 using UnityEngine;
 
 public class QuickTimeEvent : MonoBehaviour {
@@ -43,6 +44,7 @@ public class QuickTimeEvent : MonoBehaviour {
         nextSleepDuration = GenerateSleepDuration();
         Debug.Log(nextSleepDuration);
         sprite.enabled = false;
+        EggStatusManager.Instance.Disturbances -= 1;
     }
 
     private float GenerateSleepDuration() {
@@ -58,6 +60,7 @@ public class QuickTimeEvent : MonoBehaviour {
     private void GoToFiredState() {
         state = State.Fired;
         sprite.enabled = true;
+        EggStatusManager.Instance.Disturbances += 1;
     }
 
     void OnTriggerEnter2D(Collider2D other) {
