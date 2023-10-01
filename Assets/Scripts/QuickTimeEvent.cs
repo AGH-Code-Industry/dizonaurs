@@ -6,6 +6,7 @@ public class QuickTimeEvent : MonoBehaviour {
     public float MinSleepDuration;
     public float MaxSleepDuration;
     public float FixingTime;
+    public GameObject imageState;
 
     public State state = State.Sleeping;
 
@@ -55,6 +56,11 @@ public class QuickTimeEvent : MonoBehaviour {
         {
             _audio.Stop();
         }
+
+        if (imageState)
+        {
+            imageState.SetActive(false);
+        }
         nextSleepDuration = GenerateSleepDuration();
         transform.Translate(Vector3.forward * -999);
         EggStatusManager.Instance.decreateDisturbances();
@@ -77,6 +83,11 @@ public class QuickTimeEvent : MonoBehaviour {
         if (_audio)
         {
             _audio.Play();
+        }
+
+        if (imageState)
+        {
+            imageState.SetActive(true);
         }
         EggStatusManager.Instance.Disturbances += 1;
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
