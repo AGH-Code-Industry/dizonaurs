@@ -32,7 +32,8 @@ namespace EggSystem
         private void CalculateGrowth()
         {
             CurrentGrowthRaw = DevSettings.Instance.eggSettings.normalGrowth - Disturbances;
-            CurrentGrowth = (DevSettings.Instance.eggSettings.normalGrowth - Disturbances) * Time.deltaTime;
+            CurrentGrowthRaw = Math.Clamp(CurrentGrowthRaw, 0, 100);
+            CurrentGrowth = CurrentGrowthRaw * Time.deltaTime;
             AdditionalGrowth = (DevSettings.Instance.eggSettings.additionalGrowth) * Time.deltaTime;
         }
     }

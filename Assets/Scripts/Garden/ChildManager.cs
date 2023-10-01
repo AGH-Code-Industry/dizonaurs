@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using CoinPackage.Debugging;
 using UnityEngine;
 
 namespace Garden
@@ -21,7 +22,15 @@ namespace Garden
 
         public void CreateNewChildLevelHigher(int newLevel, Vector2 position)
         {
-            Instantiate(childPrefabs[newLevel], position, Quaternion.identity);
+            try
+            {
+                Instantiate(childPrefabs[newLevel], position, Quaternion.identity);
+            }
+            catch (Exception e)
+            {
+                CDebug.Log("Max dino level.");
+            }
+            
         }
     }
 }

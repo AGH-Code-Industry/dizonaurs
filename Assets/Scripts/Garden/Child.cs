@@ -14,6 +14,9 @@ public class Child : MonoBehaviour
     
     // TODO: Require collider
     public int level;
+    public int wage;
+    public GameObject coinPrefab;
+    public Transform coinSpawnPlace;
 
     // private void OnCollisionEnter(Collision collision)
     // {
@@ -64,5 +67,11 @@ public class Child : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void EarnMoney()
+    {
+        Player.Instance.AddMoney(wage);
+        Instantiate(coinPrefab, coinSpawnPlace.position, Quaternion.identity);
     }
 }

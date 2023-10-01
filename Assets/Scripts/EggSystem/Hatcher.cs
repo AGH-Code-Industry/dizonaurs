@@ -16,12 +16,12 @@ namespace EggSystem
 
         private void Start()
         {
-            CreateNewEgg();
+            StartCoroutine(WaitForNewEgg(Random.Range(2f, 4f)));
         }
 
         public void TellEggHatched()
         {
-            var pos = parentForNewChild.position + new Vector3(Random.Range(-5f, 5f), Random.Range(-5f, 5f), 0f);
+            var pos = parentForNewChild.position + new Vector3(Random.Range(-10f, 10f), Random.Range(-7f, 7f), 0f);
             var child = Instantiate(childPrefab, pos, Quaternion.identity,
                 parentForNewChild);
             // child.SetActive(false);

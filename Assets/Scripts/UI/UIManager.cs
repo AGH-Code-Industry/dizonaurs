@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,7 @@ namespace UI
     {
         [SerializeField] private GameObject goToGarden;
         [SerializeField] private GameObject goToLevel;
+        [SerializeField] private TextMeshProUGUI moneyField;
 
         public Transform cameraa;
 
@@ -20,6 +22,11 @@ namespace UI
             _goToLevelButton = goToLevel.GetComponent<Button>();
             _goToGardenButton.onClick.AddListener(GoToGarden);
             _goToLevelButton.onClick.AddListener(GoToLevel);
+        }
+
+        private void Update()
+        {
+            moneyField.SetText(Player.Instance.money.ToString());
         }
 
         public void GoToGarden()

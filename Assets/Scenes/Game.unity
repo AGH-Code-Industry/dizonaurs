@@ -22323,6 +22323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goToGarden: {fileID: 1189766486}
   goToLevel: {fileID: 1460972048}
+  moneyField: {fileID: 0}
   cameraa: {fileID: 1996047014}
 --- !u!1 &520856213
 GameObject:
