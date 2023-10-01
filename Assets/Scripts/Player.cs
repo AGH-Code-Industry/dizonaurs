@@ -10,6 +10,8 @@ public class Player : MonoBehaviour {
     public Animator animator;
     public NavMeshAgent agent;
 
+    public int money = 0;
+
     void Awake() {
         if (Instance == null) {
             Instance = this;
@@ -26,5 +28,21 @@ public class Player : MonoBehaviour {
 
     void Update() {
         animator.SetFloat("Velocity", agent.velocity.magnitude);
+    }
+
+    public void AddMoney(int money)
+    {
+        this.money += money;
+    }
+
+    public bool RemoveMoney(int money)
+    {
+        if (money > this.money)
+        {
+            return false;
+        }
+
+        this.money -= money;
+        return true;
     }
 }
