@@ -9,10 +9,10 @@ public class QuickTimeEvent : MonoBehaviour {
 
     public State state = State.Sleeping;
 
-    public Slider ProgressBar;
+    public GameObject ProgressBar;
+    private Slider _slider;
     private float timer = 0;
     private float nextSleepDuration = 0;
-    private SpriteRenderer sprite;
     private AudioSource _audio;
 
     public enum State {
@@ -23,8 +23,8 @@ public class QuickTimeEvent : MonoBehaviour {
 
 
     void Awake() {
-        sprite = GetComponent<SpriteRenderer>();
         _audio = GetComponent<AudioSource>();
+        _slider = ProgressBar.GetComponent<Slider>();
     }
 
     void Start() {
@@ -33,10 +33,8 @@ public class QuickTimeEvent : MonoBehaviour {
     }
 
     private void InitializeProgressBar() {
-        ProgressBar.minValue = 0;
-        ProgressBar.maxValue = FixingTime;
-        ProgressBar.value = 0;
-
+        _slider.minValue = 0;
+        _slider.maxValue = FixingTime;
     }
 
     void Update() {
@@ -60,6 +58,8 @@ public class QuickTimeEvent : MonoBehaviour {
         nextSleepDuration = GenerateSleepDuration();
         transform.Translate(Vector3.forward * -999);
         EggStatusManager.Instance.decreateDisturbances();
+        _slider.value = 0;
+        ProgressBar.SetActive(false);
     }
 
     private float GenerateSleepDuration() {
@@ -93,11 +93,12 @@ public class QuickTimeEvent : MonoBehaviour {
     void GoToFixingState() {
         state = State.Fixing;
         timer = Time.time;
+        ProgressBar.SetActive(true);
     }
 
     void FixingTick() {
         var fixingDuration = Time.time - timer;
-        ProgressBar.value = fixingDuration;
+        _slider.value = fixingDuration;
         if (fixingDuration >= FixingTime) {
             GoToSleep();
         }
