@@ -9,8 +9,11 @@ public class Player : MonoBehaviour {
     public MoveTo moveTo;
     public Animator animator;
     public NavMeshAgent agent;
+    public GameObject cloud;
+    public float cloudDisplayTime;
 
     public int money = 0;
+    private float timer;
 
     void Awake() {
         if (Instance == null) {
@@ -28,6 +31,10 @@ public class Player : MonoBehaviour {
 
     void Update() {
         animator.SetFloat("Velocity", agent.velocity.magnitude);
+
+        if (cloud.activeSelf && Time.time - timer >= cloudDisplayTime) {
+            cloud.SetActive(false);
+        }
     }
 
     public void AddMoney(int money)
@@ -44,5 +51,10 @@ public class Player : MonoBehaviour {
 
         this.money -= money;
         return true;
+    }
+
+    public void DisplayCloud() {
+        cloud.SetActive(true);
+        timer = Time.time;
     }
 }
