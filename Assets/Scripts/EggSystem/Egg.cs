@@ -14,6 +14,7 @@ namespace EggSystem
     {
         public Hatcher hatcher;
         public GameObject sliderHolder;
+        public GameObject particles;
 
         private AudioSource _audio;
         private Slider _slider;
@@ -43,10 +44,12 @@ namespace EggSystem
                 return;
             }
             _currentGrowth += _eggManager.CurrentGrowth;
+            particles.SetActive(false);
             // TODO: Add points based on dino proximity
             if (Vector2.Distance(transform.position, Player.Instance.transform.position) < DevSettings.Instance.eggSettings.maxDistanceToEgg)
             {
                 _currentGrowth += _eggManager.AdditionalGrowth;
+                particles.SetActive(true);
             }
             if (_currentGrowth > DevSettings.Instance.eggSettings.pointsToBorn)
             {
