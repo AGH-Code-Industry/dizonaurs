@@ -1,5 +1,6 @@
 using EggSystem;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class QuickTimeEvent : MonoBehaviour {
     public float MinSleepDuration;
@@ -7,11 +8,12 @@ public class QuickTimeEvent : MonoBehaviour {
     public float FixingTime;
 
     public State state = State.Sleeping;
+
+    public Slider ProgressBar;
     private float timer = 0;
     private float nextSleepDuration = 0;
     private SpriteRenderer sprite;
     private AudioSource _audio;
-
 
     public enum State {
         Sleeping,
@@ -27,6 +29,14 @@ public class QuickTimeEvent : MonoBehaviour {
 
     void Start() {
         GoToSleep();
+        InitializeProgressBar();
+    }
+
+    private void InitializeProgressBar() {
+        ProgressBar.minValue = 0;
+        ProgressBar.maxValue = FixingTime;
+        ProgressBar.value = 0;
+
     }
 
     void Update() {
@@ -48,7 +58,6 @@ public class QuickTimeEvent : MonoBehaviour {
             _audio.Stop();
         }
         nextSleepDuration = GenerateSleepDuration();
-        Debug.Log(nextSleepDuration);
         transform.Translate(Vector3.forward * -999);
         EggStatusManager.Instance.decreateDisturbances();
     }
@@ -87,7 +96,9 @@ public class QuickTimeEvent : MonoBehaviour {
     }
 
     void FixingTick() {
-        if (Time.time - timer >= FixingTime) {
+        var fixingDuration = Time.time - timer;
+        ProgressBar.value = fixingDuration;
+        if (fixingDuration >= FixingTime) {
             GoToSleep();
         }
     }
