@@ -41,11 +41,18 @@ namespace EggSystem
             }
             _currentGrowth += _eggManager.CurrentGrowth;
             // TODO: Add points based on dino proximity
+            if (Vector2.Distance(transform.position, Player.Instance.transform.position) < DevSettings.Instance.eggSettings.maxDistanceToEgg)
+            {
+                _currentGrowth += _eggManager.AdditionalGrowth;
+            }
             if (_currentGrowth > DevSettings.Instance.eggSettings.pointsToBorn)
             {
                 CDebug.Log($"Egg hatched!" % Colorize.Green);
                 _finished = true;
                 _anim.SetTrigger("eggHatched");
+            }else if (_currentGrowth < 0f)
+            {
+                Destroy(gameObject);
             }
 
             _slider.value = _currentGrowth;

@@ -1,4 +1,5 @@
 using System;
+using EggSystem;
 using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -40,12 +41,14 @@ namespace Minigames
 
         private void Break()
         {
+            EggStatusManager.Instance.Disturbances += 1;
             _isBroken = true;
             _renderer.color = Color.red;
         }
 
         public void Repair()
         {
+            EggStatusManager.Instance.Disturbances -= 1;
             _renderer.color = Color.white;
             CalcNextActivationTime();
             _isBroken = false;

@@ -11,6 +11,7 @@ namespace EggSystem
         
         public float CurrentGrowthRaw { get; set; }
         public float CurrentGrowth { get; set; }
+        public float AdditionalGrowth { get; set; }
         public int Disturbances { get; set; } = 0;
 
         private void Awake()
@@ -32,6 +33,7 @@ namespace EggSystem
         {
             CurrentGrowthRaw = DevSettings.Instance.eggSettings.normalGrowth - Disturbances;
             CurrentGrowth = (DevSettings.Instance.eggSettings.normalGrowth - Disturbances) * Time.deltaTime;
+            AdditionalGrowth = (DevSettings.Instance.eggSettings.additionalGrowth) * Time.deltaTime;
         }
     }
 }
