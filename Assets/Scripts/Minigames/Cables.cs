@@ -21,7 +21,7 @@ namespace Minigames
         private float _lastActivation;
         private float _nextActivationTime;
         private float _deviation;
-        private bool _isBroken = false;
+        public bool IsBroken = false;
 
         private void Awake()
         {
@@ -34,7 +34,7 @@ namespace Minigames
 
         private void Update()
         {
-            if (_isBroken)
+            if (IsBroken)
             {
                 return;
             }
@@ -46,8 +46,7 @@ namespace Minigames
 
         private void Break()
         {
-            EggStatusManager.Instance.Disturbances += 1;
-            _isBroken = true;
+            IsBroken = true;
             // _renderer.color = Color.red;
             particles.SetActive(true);
             _audio.Play();
@@ -55,11 +54,10 @@ namespace Minigames
 
         public void Repair()
         {
-            EggStatusManager.Instance.decreateDisturbances();
             particles.SetActive(false);
             // _renderer.color = Color.white;
             CalcNextActivationTime();
-            _isBroken = false;
+            IsBroken = false;
             _audio.Stop();
         }
 
@@ -71,7 +69,7 @@ namespace Minigames
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            if (_isBroken)
+            if (IsBroken)
             {
                 InitGame();
             }

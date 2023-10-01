@@ -1,5 +1,6 @@
 using System;
 using App;
+using Minigames;
 using UnityEngine;
 
 namespace EggSystem
@@ -7,37 +8,31 @@ namespace EggSystem
     public class EggStatusManager : MonoBehaviour
     {
         public static EggStatusManager Instance;
-        
+        public Cables cables;
         
         public float CurrentGrowthRaw { get; set; }
         public float CurrentGrowth { get; set; }
         public float AdditionalGrowth { get; set; }
-        public int Disturbances { get; set; }
 
-        public void decreateDisturbances() {
-            if (Disturbances > 0) {
-                Disturbances--;
-            }
-        }
-
-        private void Awake()
-        {
+        private void Awake() {
             if (Instance != null)
             {
                 throw new Exception("Tried to overwrite singleton");
             }
             Instance = this;
-            Disturbances = 0;
         }
 
-        private void Update()
-        {
+        private void Update() {
             CalculateGrowth();
+        }
+
+        private int Disturbances() {
+            return QuickTimeEventsManager.Instance.firedQuickTimeEvents() + (cables.IsBroken ? 1 : 0);
         }
 
         private void CalculateGrowth()
         {
-            CurrentGrowthRaw = DevSettings.Instance.eggSettings.normalGrowth - Disturbances;
+            CurrentGrowthRaw = DevSettings.Instance.eggSettings.normalGrowth - Disturbances();
             // CurrentGrowthRaw = Math.Clamp(CurrentGrowthRaw, 0, 100);
             CurrentGrowth = CurrentGrowthRaw * Time.deltaTime;
             AdditionalGrowth = (DevSettings.Instance.eggSettings.additionalGrowth) * Time.deltaTime;

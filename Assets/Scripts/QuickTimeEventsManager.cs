@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Minigames;
 using UnityEngine;
 
 public class QuickTimeEventsManager : MonoBehaviour {
-    public QuickTimeEventsManager Instance = null;
+    static public QuickTimeEventsManager Instance = null;
 
     private List<QuickTimeEvent> qtEvents = new List<QuickTimeEvent>();
 
@@ -21,9 +22,9 @@ public class QuickTimeEventsManager : MonoBehaviour {
         }
     }
 
-    int firedQuickTimeEvents() {
+    public int firedQuickTimeEvents() {
         return qtEvents
-            .FindAll(qtEvent => qtEvent.state == QuickTimeEvent.State.Fired)
+            .FindAll(qtEvent => qtEvent.state == QuickTimeEvent.State.Fired || qtEvent.state == QuickTimeEvent.State.Fixing)
             .Count;
     }
 }

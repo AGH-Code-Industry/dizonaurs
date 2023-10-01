@@ -65,7 +65,6 @@ public class QuickTimeEvent : MonoBehaviour {
         }
         nextSleepDuration = GenerateSleepDuration();
         transform.Translate(Vector3.forward * -999);
-        EggStatusManager.Instance.decreateDisturbances();
         _slider.value = 0;
         ProgressBar.SetActive(false);
     }
@@ -92,7 +91,6 @@ public class QuickTimeEvent : MonoBehaviour {
         {
             imageState.SetActive(true);
         }
-        EggStatusManager.Instance.Disturbances += 1;
         _slider.value = 0;
         ProgressBar.SetActive(false);
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);

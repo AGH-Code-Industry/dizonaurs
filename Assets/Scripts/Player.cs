@@ -10,6 +10,7 @@ public class Player : MonoBehaviour {
     public Animator animator;
     public NavMeshAgent agent;
     public GameObject cloud;
+    public SpriteRenderer sprite;
     public float cloudDisplayTime;
 
     public int money = 0;
@@ -27,6 +28,7 @@ public class Player : MonoBehaviour {
         moveTo = GetComponent<MoveTo>();
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     void Update() {
@@ -60,9 +62,9 @@ public class Player : MonoBehaviour {
 
     private void SetDirection() {
         if (agent.velocity.x < 0) {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
+            sprite.flipX = true;
         } else {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            sprite.flipX = false;
         }
 
     }
