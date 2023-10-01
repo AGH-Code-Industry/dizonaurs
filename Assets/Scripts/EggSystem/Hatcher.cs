@@ -10,6 +10,7 @@ namespace EggSystem
     {
         public GameObject eggPrefab;
         public Transform eggPlace;
+        public Transform parent;
 
         private void Start()
         {
@@ -25,7 +26,7 @@ namespace EggSystem
         
         private void CreateNewEgg()
         {
-            var newEgg = Instantiate(eggPrefab, eggPlace.position, Quaternion.identity);
+            var newEgg = Instantiate(eggPrefab, eggPlace.position, Quaternion.identity, parent);
             var eggScript = newEgg.GetComponent<Egg>();
             eggScript.hatcher = this;
         }
