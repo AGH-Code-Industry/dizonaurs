@@ -8,7 +8,7 @@ public class Chair : MonoBehaviour {
     void Update() {
         if (qtEvent.state == QuickTimeEvent.State.Fired) {
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
-        } else {
+        } else if (qtEvent.state == QuickTimeEvent.State.Sleeping) {
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         }
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);

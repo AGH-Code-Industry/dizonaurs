@@ -9,6 +9,7 @@ public class QuickTimeEvent : MonoBehaviour {
     public GameObject imageState;
 
     public State state = State.Sleeping;
+    public State previousState;
 
     public GameObject ProgressBar;
     private Slider _slider;
@@ -50,6 +51,7 @@ public class QuickTimeEvent : MonoBehaviour {
     }
 
     private void GoToSleep() {
+        previousState = state;
         state = State.Sleeping;
         timer = Time.time;
         if (_audio)
@@ -79,6 +81,7 @@ public class QuickTimeEvent : MonoBehaviour {
     }
 
     private void GoToFiredState() {
+        previousState = state;
         state = State.Fired;
         if (_audio)
         {
@@ -90,6 +93,8 @@ public class QuickTimeEvent : MonoBehaviour {
             imageState.SetActive(true);
         }
         EggStatusManager.Instance.Disturbances += 1;
+        _slider.value = 0;
+        ProgressBar.SetActive(false);
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
     }
 
@@ -98,10 +103,15 @@ public class QuickTimeEvent : MonoBehaviour {
     }
 
     void OnTriggerExit2D(Collider2D other) {
-        GoToSleep();
+        if (previousState == State.Fired) {
+            GoToFiredState();
+        } else if (previousState == State.Sleeping) {
+            GoToSleep();
+        }
     }
 
     void GoToFixingState() {
+        previousState = state;
         state = State.Fixing;
         timer = Time.time;
         ProgressBar.SetActive(true);
