@@ -46,7 +46,7 @@ namespace Minigames
         {
             EggStatusManager.Instance.Disturbances += 1;
             _isBroken = true;
-            _renderer.color = Color.red;
+            // _renderer.color = Color.red;
             particles.SetActive(true);
         }
 
@@ -54,7 +54,7 @@ namespace Minigames
         {
             EggStatusManager.Instance.Disturbances -= 1;
             particles.SetActive(false);
-            _renderer.color = Color.white;
+            // _renderer.color = Color.white;
             CalcNextActivationTime();
             _isBroken = false;
         }
