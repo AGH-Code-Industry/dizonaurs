@@ -134,7 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 4
   wage: 35
-  coinPrefab: {fileID: 2968879717633868447, guid: df5ba05d113d64628937f88ed3bbff15, type: 3}
+  coinPrefab: {fileID: 2968879717633868447, guid: 1e0ce23266bfe330cb16e80aa94eab51, type: 3}
   coinSpawnPlace: {fileID: 485096053970253824}
 --- !u!114 &8352779461225607069
 MonoBehaviour:
