@@ -44645,6 +44645,8 @@ MonoBehaviour:
   childPrefabs:
   - {fileID: 8352779461225607057, guid: 72edbac0222474159bcc09b04a52c4cd, type: 3}
   - {fileID: 8352779461225607057, guid: d3ffb6e08d9f146b4a62b567ea35badc, type: 3}
+  - {fileID: 8352779461225607057, guid: fafa7fbf92736f00191ed03e9082fbce, type: 3}
+  - {fileID: 8352779461225607057, guid: ced612ef3284fec9fac37cd240fcb7e8, type: 3}
 --- !u!1001 &2026526859
 PrefabInstance:
   m_ObjectHideFlags: 0
