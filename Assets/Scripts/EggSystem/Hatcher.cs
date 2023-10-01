@@ -11,6 +11,8 @@ namespace EggSystem
         public GameObject eggPrefab;
         public Transform eggPlace;
         public Transform parent;
+        public Transform parentForNewChild;
+        public GameObject childPrefab;
 
         private void Start()
         {
@@ -19,6 +21,9 @@ namespace EggSystem
 
         public void TellEggHatched()
         {
+            var child = Instantiate(childPrefab, new Vector2(Random.Range(-5f, 5f), Random.Range(-3f, 3f)), Quaternion.identity,
+                parentForNewChild);
+            // child.SetActive(false);
             var time = Random.Range(-DevSettings.Instance.eggSettings.timeForHatchVariation,
                 DevSettings.Instance.eggSettings.timeForHatchVariation);
             StartCoroutine(WaitForNewEgg(DevSettings.Instance.eggSettings.timeForNewEggToHatch + time));
