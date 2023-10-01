@@ -3,6 +3,7 @@ using UnityEngine;
 public class QuickTimeEvent : MonoBehaviour {
     public float MinSleepDuration;
     public float MaxSleepDuration;
+    public float FixingTime;
 
     public State state = State.Sleeping;
     private float timer = 0;
@@ -12,7 +13,8 @@ public class QuickTimeEvent : MonoBehaviour {
 
     public enum State {
         Sleeping,
-        Fired
+        Fired,
+        Fixing
     }
 
 
@@ -29,7 +31,9 @@ public class QuickTimeEvent : MonoBehaviour {
             case State.Sleeping:
                 SleepTick();
                 break;
-
+            case State.Fixing:
+                FixingTick();
+                break;
         }
     }
 
@@ -57,6 +61,21 @@ public class QuickTimeEvent : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D other) {
+        GoToFixingState();
+    }
+
+    void OnTriggerExit2D(Collider2D other) {
         GoToSleep();
+    }
+
+    void GoToFixingState() {
+        state = State.Fixing;
+        timer = Time.time;
+    }
+
+    void FixingTick() {
+        if (Time.time - timer >= FixingTime) {
+            GoToSleep();
+        }
     }
 }
