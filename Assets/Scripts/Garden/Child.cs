@@ -60,6 +60,7 @@ public class Child : MonoBehaviour
                     ChildManager.Instance.CreateNewChildLevelHigher(level+1, child.transform.position);
                     Destroy(child.gameObject);
                     Destroy(gameObject);
+                    return;
                 }
             }
         }

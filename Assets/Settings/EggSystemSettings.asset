@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db45b09bb6e74611b03db761cce34f02, type: 3}
   m_Name: EggSystemSettings
   m_EditorClassIdentifier: 
-  pointsToBorn: 88
+  pointsToBorn: 30
   normalGrowth: 3
   additionalGrowth: 3
   timeForNewEggToHatch: 3

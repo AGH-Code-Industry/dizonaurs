@@ -9,8 +9,7 @@ namespace UI
         [SerializeField] private GameObject goToGarden;
         [SerializeField] private GameObject goToLevel;
 
-        public GameObject level;
-        public GameObject garden;
+        public Transform cameraa;
 
         private Button _goToGardenButton;
         private Button _goToLevelButton;
@@ -25,18 +24,16 @@ namespace UI
 
         public void GoToGarden()
         {
-            level.SetActive(false);
-            garden.SetActive(true);
             goToGarden.SetActive(false);
             goToLevel.SetActive(true);
+            cameraa.position = new Vector3(63f, cameraa.position.y, cameraa.position.z);
         }
 
         public void GoToLevel()
         {
-            level.SetActive(true);
-            garden.SetActive(false);
             goToLevel.SetActive(false);
             goToGarden.SetActive(true);
+            cameraa.position = new Vector3(-6.2f, cameraa.position.y, cameraa.position.z);
         }
     }
 }

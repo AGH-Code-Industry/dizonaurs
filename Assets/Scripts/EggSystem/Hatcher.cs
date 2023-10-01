@@ -21,7 +21,8 @@ namespace EggSystem
 
         public void TellEggHatched()
         {
-            var child = Instantiate(childPrefab, new Vector2(Random.Range(-5f, 5f), Random.Range(-3f, 3f)), Quaternion.identity,
+            var pos = parentForNewChild.position + new Vector3(Random.Range(-5f, 5f), Random.Range(-5f, 5f), 0f);
+            var child = Instantiate(childPrefab, pos, Quaternion.identity,
                 parentForNewChild);
             // child.SetActive(false);
             var time = Random.Range(-DevSettings.Instance.eggSettings.timeForHatchVariation,
