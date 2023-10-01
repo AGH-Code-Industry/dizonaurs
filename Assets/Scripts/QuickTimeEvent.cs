@@ -43,7 +43,7 @@ public class QuickTimeEvent : MonoBehaviour {
         timer = Time.time;
         nextSleepDuration = GenerateSleepDuration();
         Debug.Log(nextSleepDuration);
-        sprite.enabled = false;
+        transform.Translate(Vector3.forward * -999);
         EggStatusManager.Instance.Disturbances -= 1;
     }
 
@@ -59,8 +59,8 @@ public class QuickTimeEvent : MonoBehaviour {
 
     private void GoToFiredState() {
         state = State.Fired;
-        sprite.enabled = true;
         EggStatusManager.Instance.Disturbances += 1;
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
     }
 
     void OnTriggerEnter2D(Collider2D other) {

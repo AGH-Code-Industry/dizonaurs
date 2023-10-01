@@ -1,13 +1,13 @@
 using UnityEngine;
 
-[RequireComponent(typeof(CircleCollider2D))]
+[RequireComponent(typeof(Collider2D))]
 public class Destination : MonoBehaviour {
-    private CircleCollider2D collider;
+    private Collider2D collider;
     private Camera camera;
     public Transform destination;
 
     void Start() {
-        collider = GetComponent<CircleCollider2D>();
+        collider = GetComponent<Collider2D>();
         camera = Camera.main;
     }
 
